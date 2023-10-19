@@ -14,13 +14,20 @@ elem.btn.addEventListener('click', submit);
 
 function submit(event) {
   event.preventDefault();
-
+  elem.btn.disabled = true;
+  const btnDelay =
+    Number(elem.step.value) * Number(elem.amount.value) +
+    Number(elem.delay.value);
   amount = elem.amount.value;
 
   for (let i = 1; i <= amount; i += 1) {
     delay = Number(elem.delay.value) + Number(elem.step.value * (i - 1));
     createPromise(i, delay);
   }
+
+  setTimeout(() => {
+    elem.btn.disabled = false;
+  }, btnDelay + 500);
 }
 
 function createPromise(position, delay) {

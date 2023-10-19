@@ -19,10 +19,8 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    // console.log(selectedDates);
-    elem.startBtn.disabled = true;
-
     if (dateNow.getTime() >= selectedDates[0].getTime()) {
+      elem.startBtn.disabled = true;
       Notiflix.Notify.failure(`Please choose a date in the future`);
     } else {
       elem.startBtn.disabled = false;
@@ -36,6 +34,7 @@ elem.startBtn.addEventListener('click', getDate);
 
 function getDate() {
   elem.startBtn.disabled = true;
+  fp.element.disabled = true;
 
   const dateStart = fp.selectedDates[0];
 

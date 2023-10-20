@@ -10,6 +10,7 @@ const elem = {
   min: document.querySelector('.min'),
   sec: document.querySelector('.sec'),
 };
+elem.startBtn.disabled = true;
 
 const dateNow = new Date();
 
@@ -20,7 +21,6 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     if (dateNow.getTime() >= selectedDates[0].getTime()) {
-      elem.startBtn.disabled = true;
       Notiflix.Notify.failure(`Please choose a date in the future`);
     } else {
       elem.startBtn.disabled = false;
